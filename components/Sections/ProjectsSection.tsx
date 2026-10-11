@@ -8,7 +8,6 @@ import { CutCard } from "@/components/Common/CutCard";
 import { portfolioData } from "@/data/portfolioData";
 import { useAudio } from "@/context/AudioContext";
 import Image from "next/image";
-import Link from "next/link";
 
 export const ProjectsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -244,17 +243,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 LAUNCH LIVE ↗
               </a>
 
-              <Link
-                href={`/project/${project.id}`}
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   playLaser();
+                  window.location.href = `/project/${project.id}`;
                 }}
                 onMouseEnter={playHover}
                 className="cut-corner-button border border-primary/40 bg-bg-secondary px-3 py-2 font-mono text-xs text-primary hover:bg-primary/20 hover:border-primary transition-all"
               >
                 SPECS ↗
-              </Link>
+              </button>
 
               {project.githubLink && (
                 <a
